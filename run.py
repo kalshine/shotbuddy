@@ -6,6 +6,10 @@ import webbrowser
 from configparser import ConfigParser
 from pathlib import Path
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
 from app import create_app
 
 
@@ -23,7 +27,7 @@ def load_server_config():
     return host, port
 
 
-app = create_app()
+app = create_app.run()
 
 if __name__ == "__main__":
     cfg_host, cfg_port = load_server_config()
@@ -47,3 +51,4 @@ if __name__ == "__main__":
     ).start()
 
     app.run(debug=debug, host=host, port=port)
+
